@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <link rel='stylesheet'type = 'text/css' href='vue.css' >
+</head>
+<body>
+    <div class='nav-bar'></div>
+    <div id='app'>
+        <div class='product'>
+            <div class='product-image'>
+                <img :src='image'>
+            </div>
+            <div>
+                <div class='product-div'>
+                    <div>
+                        <h1>{{product}}</h1>
+                        <p v-if='onSale'>On Sale</p>
+                        <p v-else>Check back later</p> 
+    
+                        <ul>
+                            <li v-for = 'deets in details'>{{deets}}</li>
+                        </ul>
+    
+                        <div v-for = 'variant in variants' :key = 'variant.variantId'>
+                            <p @mouseover = 'updateProductImage(variant.variantImage)'>{{variant.variantColor}}</p>
+                        </div>
+                    </div>
+                    <div class='size'>
+                        <p>Available sizes: </p>
+                        <ul v-for = 'size in sizes'>
+                            <li>{{size}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='cart'>
+            <div>
+                <button @click = 'addToCart'>Add to Cart</button>
+                <button @click = 'removeFromCart'>Remove from Cart</button>
+            </div>
+            <p>Cart({{cart}})</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src='main.js'></script>
+</body>
+</html>
