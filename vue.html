@@ -16,16 +16,20 @@
             <div>
                 <div class='product-div'>
                     <div>
-                        <h1>{{product}}</h1>
+                        <h1>{{title}}</h1>
                         <p v-if='onSale'>On Sale</p>
-                        <p v-else>Check back later</p> 
+                        <p v-else   
+                        :class ='{checkBackLater: !onSale}'>Check back later</p> 
     
                         <ul>
                             <li v-for = 'deets in details'>{{deets}}</li>
                         </ul>
     
-                        <div v-for = 'variant in variants' :key = 'variant.variantId'>
-                            <p @mouseover = 'updateProductImage(variant.variantImage)'>{{variant.variantColor}}</p>
+                        <div v-for = '(variant,index) in variants' 
+                         :key = 'variant.variantId'
+                         class='color-box'
+                         :style = '{backgroundColor: variant.variantColor}'
+                         @mouseover = 'updateProductImage(index)'>
                         </div>
                     </div>
                     <div class='size'>
@@ -39,8 +43,11 @@
         </div>
         <div class='cart'>
             <div>
-                <button @click = 'addToCart'>Add to Cart</button>
-                <button @click = 'removeFromCart'>Remove from Cart</button>
+                <button @click = 'addToCart' 
+                :disabled = '!onSale' 
+                :class= '{disabledButton: !onSale}'>Add to Cart</button>
+                <button @click = 'removeFromCart' 
+                :class = '{hiddenButton: !onSale}'>Remove from Cart</button>
             </div>
             <p>Cart({{cart}})</p>
         </div>

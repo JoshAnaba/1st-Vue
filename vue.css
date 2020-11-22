@@ -46,3 +46,28 @@
         padding: 7px;
         border-radius: 3px;
     }
+
+    .color-box{
+        height: 30px;
+        width: 30px;
+        border-radius: 3px;
+        margin-left: 15px; 
+        margin-bottom: 10px;
+    }
+
+    .color-box:hover{
+        opacity: 0.8;
+        transition: 0.3s;
+    }
+
+    .disabledButton{
+        background-color: grey;
+    }
+
+    .disabledButton, .checkBackLater{
+        text-decoration: line-through;
+    }
+
+    .hiddenButton{
+        display: none;
+    }
